@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: poppins;
+    font-size: 16px;
+}
+
+.container {
+    /* height: 100vh; */
+    width: 300px;
+    display: grid;
+    margin: auto;
+    margin-top: 10rem;
+    /* align-items: center; */
+    /* justify-content: center; */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, minmax(50px, auto));
+    grid-template-areas: 
+        'display display display display'
+        'clear clear del multiply'
+        'seven eight nine divide'
+        'six five four subtract'
+        'one two three add'
+        'zer dec equal equal'
+    ;
+    
+}
+
+.container .display {
+    border: 1px solid black;
+    height: 70px;
+    grid-area: display;
+    text-align: right;
+    background: #3c3c3c;
+    color: #f1f1f1;
+    
+    /* ! come back and figure out the width issue */
+}
+
+.container .display .previous-digit,
+.container .display .current-digit {
+    margin-right: 10px;
+}
+
+.container .display .previous-digit {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.container .display .current-digit {
+    font-size: 1rem;
+}
+
+.special-operation.multiply,
+.special-operation.divide,
+.special-operation.subtract,
+.special-operation.add {
+    background: rgb(255, 206, 71);
+}
+
+.special-operation.equal {
+    background: tomato;
+}
+
+.container .number,
+.container .special-operation {
+    height: 50px;
+    border-radius: 0;
+}
+
+
+.clear {
+    grid-area: clear;
+}
+
+.del {
+    grid-area: del;
+}
+
+.equal {
+    grid-area: equal;
+}
+
+.dec {
+    grid-area: dec;
+}
+
+.multiply {
+    grid-area: multiply;
+}
+
+.divide {
+    grid-area: divide;
+}
+
+.subtract {
+    grid-area: subtract;
+}
+
+.add {
+    grid-area: add;
+}
+
+.zer {
+    grid-area: zer;
+}
+
+.one {
+    grid-area: one;
+}
+
+.two {
+    grid-area: two;
+}
+
+.three {
+    grid-area: three;
+}
+
+.four {
+    grid-area: four;
+}
+
+.five {
+    grid-area: five;
+}
+
+.six {
+    grid-area: six;
+}
+
+.seven {
+    grid-area: seven;
+}
+
+.eight {
+    grid-area: eight;
+}
+
+.nine {
+    grid-area: nine;
+}
