@@ -37,6 +37,7 @@ body {
     text-align: right;
     background: #3c3c3c;
     color: #f1f1f1;
+    position: relative;
     
     /* ! come back and figure out the width issue */
 }
@@ -47,13 +48,16 @@ body {
 }
 
 .container .display .previous-digit {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 0.5rem;
     font-size: 0.9rem;
 }
 
 .container .display .current-digit {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 0.2rem;
+    right: 0;
+
 }
 
 .special-operation.multiply,

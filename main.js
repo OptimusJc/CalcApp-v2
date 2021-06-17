@@ -10,12 +10,13 @@ class Calculator {
         this.previousNumber = '';
         this.currentNumber = '';
         this.operand  = undefined;
+
         this.updateDisplay();
     }
 
     delete() {
-        this.previousNumber = this.currentNumber.toString();
-        this.currentNumber = this.previousNumber.slice(0, -1);
+        this.currentNumber = this.currentNumber.toString().slice(0, -1);
+
         this.updateDisplay();
     }
 
@@ -24,18 +25,54 @@ class Calculator {
 
     }
 
-    chooseOperand() {
-        
+    chooseOperand(operand) {
+        if(this.currentNumber === '') return
+        if(this.previousNumber !== '') {
+            this.compute();
+        }
 
+        this.operand = operand;
+        this.previousNumber = this.currentNumber;
+        this.currentNumber = '';
     }
 
     compute() {
 
+        let total;
+        const previous = parseFloat(this.previousNumber);
+        const current = parseFloat(this.currentNumber);
+
+        switch(this.operand) {
+            case '+':
+                total = previous + current;
+                break;
+            case '-':
+                total = previous - current;
+                break;
+            case 'x':
+                total = previous * current;
+                break;
+            case '÷':
+                total = previous / current;
+                break;
+            default: return;
+        }
+
+        this.currentNumber = total;
+        this.previousNumber = '';
+        this.operand = undefined;
+
+        this.updateDisplay();
     }
 
     updateDisplay() {
         this.currentNumberText.innerHTML = this.currentNumber;
-        // this.previousNumberText.innerHTML = 'hey';
+
+        if(this.operand != null) {
+            this.previousNumberText.innerHTML = `${this.previousNumber} ${this.operand}`;
+        }   else {
+            this.previousNumberText.innerHTML = '';
+        }
 
     }
 }
@@ -57,7 +94,6 @@ numberButtons.forEach((button) => {
 
         calculator.updateDigit(button.innerHTML);
         calculator.updateDisplay();
-
     })
 })
 
@@ -68,3 +104,15 @@ deleteButton.addEventListener('click', () => {
 clearButton.addEventListener('click', () => {
     calculator.clear();
 })
+
+operationButtons.forEach((operand) => {
+    operand.addEventListener('click', () => {
+        calculator.chooseOperand(operand.innerHTML);
+    })
+})
+
+equalButton.addEventListener('click', () => {
+    calculator.compute();
+    calculator.updateDisplay();
+})
+
